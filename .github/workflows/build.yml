@@ -1,0 +1,27 @@
+
+name: Build Shotgun King GBA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Instalar devkitPro
+        uses: game-ci/setup-gba@v1
+
+      - name: Compilar ROM
+        run: make
+
+      - name: Guardar ROM
+        uses: actions/upload-artifact@v4
+        with:
+          name: ShotgunKing-GBA
+          path: ShotgunKing.gba

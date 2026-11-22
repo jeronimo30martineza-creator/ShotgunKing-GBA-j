@@ -1,16 +1,21 @@
 
+.SUFFIXES:
+
+include $(DEVKITARM)/gba_rules
+
 TARGET := ShotgunKing
 BUILD := build
-
 SOURCES := .
+DATA :=
 INCLUDES := .
 
 ARCH := -mthumb -mthumb-interwork -mcpu=arm7tdmi
 
 CFLAGS := -g -Wall -O2 $(ARCH)
-LDFLAGS := -g $(ARCH)
+CXXFLAGS := $(CFLAGS)
+ASFLAGS := -g $(ARCH)
 
-LIBS := -ltonc
-LIBDIRS := $(LIBTONC)
+LDFLAGS = -g $(ARCH)
 
-include $(DEVKITARM)/gba_rules
+LIBS := -lgba
+LIBDIRS := $(LIBGBA)

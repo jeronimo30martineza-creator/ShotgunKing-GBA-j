@@ -8,10 +8,10 @@ BUILD := build
 SOURCES := .
 INCLUDES := .
 
-ARCH := -mthumb -mthumb-interwork -mcpu=arm7tdmi -mtune=arm7tdmi
+ARCH := -mthumb -mthumb-interwork -mcpu=arm7tdmi
 
 CFLAGS := -g -Wall -O2 $(ARCH)
-CFLAGS += $(INCLUDE)
+CXXFLAGS := $(CFLAGS)
 ASFLAGS := -g $(ARCH)
 LDFLAGS := -g $(ARCH)
 
@@ -34,8 +34,8 @@ export LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 all: $(BUILD)
 
 $(BUILD):
-	@mkdir -p $@
-	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+	mkdir -p $@
+	$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 clean:
 	rm -rf $(BUILD) $(TARGET).elf $(TARGET).gba

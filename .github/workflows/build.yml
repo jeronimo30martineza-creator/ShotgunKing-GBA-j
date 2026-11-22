@@ -1,5 +1,5 @@
 
-name: Build Shotgun King GBA
+name: Construye Shotgun King para GBA
 
 on:
   push:
@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: devkitpro/devkitarm:20260610
+    container:
+      image: devkitpro/devkitarm:20260610
 
     steps:
       - name: Descargar proyecto
